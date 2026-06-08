@@ -69,13 +69,20 @@ def run_training(config_path: str = "configs/experiment.yaml"):
 
     for step in range(total_steps):
 
-        # GPT-4o plans a new task every 200 steps
+        # GPT-4o-mini plans a new task every 200 steps
         if step % 200 == 0:
-            planned = get_next_task(info, task_history)
+            planned = get_next_task(
+                info,
+                task_history,
+                tech_progress=reward_fn.tech_tree_progress
+            )
             current_task = planned.get("task", "explore")
             task_history.append(current_task)
             if len(task_history) > 20:
                 task_history = task_history[-20:]
+
+        # Inject current task into info for logging
+        info["current_task"] = current_task
 
         # VPT executes the action
         with torch.no_grad():
@@ -106,6 +113,7 @@ def run_training(config_path: str = "configs/experiment.yaml"):
             obs, info = env.reset()
             memory = None
             task_history = []
+            reward_fn.reset_episode()
             episode_stats = {
                 "total_reward": 0,
                 "tasks_completed": [],
