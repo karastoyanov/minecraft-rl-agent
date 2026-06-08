@@ -1,0 +1,49 @@
+# ============================================================
+# REWARD FUNCTIONS — detailed configuration
+# Every value is justified by game mechanics
+# ============================================================
+
+survival:
+  stay_alive_per_step: 0.01      # ~720 points for 1 hour of survival
+  health_below_5_penalty: -0.5  # critical health
+  starve_penalty: -5.0          # starvation (food=0)
+  die_penalty: -20.0            # death
+
+farming:
+  till_soil_block: 0.2          # tilled soil block
+  irrigate_soil: 0.5            # irrigated block (water nearby)
+  plant_seed: 1.0               # planted seed
+  harvest_wheat: 5.0            # harvested wheat
+  harvest_carrot: 4.0
+  harvest_potato: 4.0
+  farm_size_5x5: 10.0           # bonus for 5x5+ farm
+  farm_size_10x10: 25.0         # bonus for 10x10+ farm
+
+animals:
+  approach_animal: 0.1          # approaching an animal
+  lead_animal_to_pen: 3.0       # leading animal to pen
+  build_fence_block: 0.3        # placed fence block
+  complete_enclosure: 15.0      # closed enclosure (no gaps)
+  feed_animal: 2.0              # feeding an animal
+  breed_animals: 10.0           # successful breeding
+  second_generation_born: 20.0  # offspring born
+
+construction:
+  place_block: 0.05             # placed block (small, frequent reward)
+  complete_floor: 5.0           # completed floor (min 4x4)
+  complete_wall: 8.0            # completed wall
+  complete_roof: 12.0           # completed roof
+  add_door: 5.0                 # placed door
+  add_window: 3.0               # placed window
+  place_bed: 20.0               # placed bed in enclosed room
+  sleep_through_night: 50.0     # MAIN GOAL: slept through the night
+
+exploration:
+  discover_new_chunk: 0.5
+  find_village: 5.0
+  find_cave: 3.0
+
+penalties:
+  idle_steps_per_5s: -0.5       # idle for more than 5 seconds
+  breaking_own_build: -2.0      # destroying own construction
+  leaving_pen_open: -5.0        # animals escape
