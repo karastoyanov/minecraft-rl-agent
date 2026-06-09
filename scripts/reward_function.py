@@ -152,8 +152,8 @@ class MinecraftRewardFunction:
             self.steps_since_new_area += 1
 
         # Anti-stuck penalty — penalize if not exploring for too long
-        if self.steps_since_new_area > 500:
-            components["exploration_stuck"] = -0.1
+        if self.steps_since_new_area > 2000:
+            components["exploration_stuck"] = -0.05
 
         # -- TECH TREE PROGRESS ----------------------------------------
         # One-time bonuses for reaching milestones (dense progress signal)

@@ -11,7 +11,7 @@ import json
 import time
 from openai import OpenAI
 
-client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+
 
 # Fallback task sequence if API fails
 FALLBACK_SEQUENCE = [
@@ -29,6 +29,9 @@ def get_next_task(info: dict, history: list = None,
     Uses GPT-4o-mini to plan the next task.
     Falls back to hardcoded sequence on API error.
     """
+    
+    client = OpenAI(api_key=os.environ["OPENAI_API_KEY"])
+    
     global _fallback_index
 
     # Extract state

@@ -26,7 +26,7 @@ from minestudio.simulator.callbacks import RecordCallback
 from minestudio.models import VPTPolicy
 
 from reward_function import MinecraftRewardFunction
-from data_logger_v2 import AgentDataLogger
+from data_logger import AgentDataLogger
 
 
 # ── GOAL SEQUENCE ──────────────────────────────────────────────────────────────
